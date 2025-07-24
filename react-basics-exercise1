@@ -15,10 +15,12 @@
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
         const currentDate = dayjs().format("MMMM D");
+        const currentTime = dayjs().format("HH:mm:ss");
         console.log(currentDate);
         const div = (
             <div>
                 <p>Today is {currentDate}</p>
+                <p>Current Time: {currentTime}</p>
             </div>
         );
 
@@ -28,4 +30,3 @@
 </body>
 
 </html>
-¯
