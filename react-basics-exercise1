@@ -14,18 +14,16 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-        const currentDate = dayjs().format("MMMM D");
-        const currentTime = dayjs().format("HH:mm:ss");
-        console.log(currentDate);
-        const div = (
-            <div>
-                <p>Today is {currentDate}</p>
-                <p>Current Time: {currentTime}</p>
-            </div>
-        );
+        const paragraph = <p>Current time: {dayjs().format('HH:mm:ss')}</p>;
 
         const container = document.querySelector(".js-container");
-        ReactDOM.createRoot(container).render(div);
+        const root = ReactDOM.createRoot(container);
+        root.render(paragraph);
+
+        setInterval(() => {
+            const paragraph = <p>Current time: {dayjs().format("HH:mm:ss")}</p>;
+            root.render(paragraph);
+        }, 1000);
     </script>
 </body>
 
