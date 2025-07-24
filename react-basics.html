@@ -1,44 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>React Basics Excercise 1</title>
-  </head>
-  <body>
-    <div class="js-container"></div>
-    <script src="./react-basics.js"></script>
 
-    <script src="https://unpkg.com/supersimpledev/react.js"></script>
-    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+<head>
+  <title>React Basics</title>
+</head>
 
-    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
-    <script type="text/babel">
-      const button = <button>hello</button>; // JSX syntax
-      const paragraph = <p>Paragraph of text</p>;
-      // const div = (
-      //   <div>
-      //     <button>Good job!</button>
-      //     <p>My name is Aneetta</p>
-      //   </div>
-      // );
-      const productCost = 10 + (2 * 5);
-      const shippingCost = 5;
-      const totalCost = productCost + shippingCost;
-      console.log('$',productCost);
-      const div = (
-        <div>
-          <p>Cotton socks</p>
-          <p>Price: $10</p>
-          <button>Add to cart</button>
-          <p>Product cost: ${productCost}</p>
-          <p>Shipping cost: ${shippingCost}</p>
-          <p>Total cost: ${totalCost}</p>
-          <button>Place your order</button>
-        </div>
-      );
-      
-      const container = document.querySelector(".js-container");
-      ReactDOM.createRoot(container).render(div);
-    </script>
-  </body>
+<body>
+  <div class="js-container"></div>
+  <script src="./react-basics.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+  <script type="text/babel">
+    const button = <button>hello</button>; // JSX syntax
+    const paragraph = <p>Paragraph of text</p>;
+    const div = (
+      <div>
+        <button>hello</button>
+        <p>Paragraph of text {2 + 2}</p>
+      </div>
+    );
+    const container = document.querySelector(".js-container");
+    ReactDOM.createRoot(container).render(div);
+  </script>
+</body>
 </html>
- 
