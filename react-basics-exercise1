@@ -16,8 +16,9 @@
     <script type="text/babel">
         const div = (
             <div>
-                <button>Good job!</button>
-                <p>My name is Aneetta</p>
+                <p>Cotton socks</p>
+                <p>Price: $10</p>
+                <button>Add to cart</button>
             </div>
         );
         const container = document.querySelector(".js-container");
