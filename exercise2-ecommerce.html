@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>ECommerce</title>
-</head>
-
-<body>
+  </head>
+  <body>
     <div class="js-container"></div>
     <script src="./react-basics.js"></script>
 
@@ -14,27 +12,32 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-        function ProductDetails({ title, price }) {
-            return (
-                <>
-                    <p>{title}</p>
-                    <p>Price: ${price}</p>
-                    <button>Add to Cart</button>
-                </>
-            );
-        }
-        function App() {
-            return (
-                <>
-                    <ProductDetails title="Cotton socks" price="10.90" />
-                    <ProductDetails title="Tennis balls" price="6.00" />
-                    <ProductDetails title="Plain T-shirt" price="7.99" />
-                </>
-            );
-        }
-        const container = document.querySelector(".js-container");
-        ReactDOM.createRoot(container).render(<App />);
+      function ProductDetails({ title, price, discountedPrice }) {
+        return (
+          <>
+            <p>{title}</p>
+            <p>Price: ${price}</p>
+            {discountedPrice && <p>Discounted Price: ${discountedPrice}</p>}
+            <button>Add to Cart</button>
+          </>
+        );
+      }
+      function App() {
+        return (
+          <>
+            <ProductDetails
+              title="Cotton socks"
+              price="10.90"
+              discountedPrice="5.45"
+            />
+            <ProductDetails title="Tennis balls" price="6.00" />
+            <ProductDetails title="Plain T-shirt" price="7.99" />
+          </>
+        );
+      }
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
     </script>
-</body>
-
+  </body>
 </html>
+¯
