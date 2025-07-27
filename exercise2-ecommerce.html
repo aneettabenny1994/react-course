@@ -18,14 +18,18 @@
             return (
                 <>
                     <p>{title}</p>
-
-                    {!discountedPrice && <p>Price: ${price}</p>}
-                    {discountedPrice && (
-                        <p>
-                            <del>Price: ${price}</del>
-                        </p>
+                    {discountedPrice ? (
+                        <>
+                            <p>
+                                <del>Price: ${price}</del>
+                            </p>
+                            <p>Discounted Price: ${discountedPrice}</p>
+                        </>
+                    ) : (
+                        <>
+                            <p>Price: ${price}</p>
+                        </>
                     )}
-                    {discountedPrice && <p>Discounted Price: ${discountedPrice}</p>}
                     <button>Add to Cart</button>
                 </>
             );
