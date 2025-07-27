@@ -14,8 +14,8 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-        function App() {
-            const [count, setCount] = React.useState(0);
+        function Counter({ startCount }) {
+            const [count, setCount] = React.useState(startCount);
             function ButtonClicked() {
                 setCount(count + 1);
             }
@@ -24,6 +24,14 @@
                     <button onClick={ButtonClicked}>
                         Clicked {count} {count === 1 ? "time" : "times"}
                     </button>
+                </>
+            );
+        }
+        function App() {
+            return (
+                <>
+                    <Counter startCount={2} />
+                    <Counter startCount={0} />
                 </>
             );
         }
