@@ -26,8 +26,24 @@
                 </>
             );
         }
+
+        function TextInput({ inputText, enteredText }) {
+            function UpdateText(event) {
+                enteredText(event.target.value);
+            }
+            return (
+                <>
+                    <div>
+                        <input onChange={UpdateText} value={inputText} />
+                        <p>{inputText}</p>
+                    </div>
+                </>
+            );
+        }
+
         function App() {
             const [count, setCount] = React.useState(0);
+            const [inputText, enteredText] = React.useState("");
             function ResetCounter() {
                 setCount(0);
             }
@@ -36,6 +52,8 @@
                     <Counter count={count} setCount={setCount} />
                     <Counter count={count} setCount={setCount} />
                     <button onClick={ResetCounter}>Reset</button>
+
+                    <TextInput inputText={inputText} enteredText={enteredText} />
                 </>
             );
         }
