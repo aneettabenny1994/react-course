@@ -31,12 +31,18 @@
             function UpdateText(event) {
                 enteredText(event.target.value);
             }
+            function ResetText() {
+                enteredText("");
+            }
+            function SetSample() {
+                enteredText('Alice')
+            }
             return (
                 <>
-                    <div>
-                        <input onChange={UpdateText} value={inputText} />
-                        <p>{inputText}</p>
-                    </div>
+                    <input onChange={UpdateText} value={inputText} />
+                    <p>{inputText}</p>
+                    <button onClick={ResetText}>Reset</button>
+                    <button onClick={SetSample}>Example</button>
                 </>
             );
         }
@@ -47,13 +53,15 @@
             function ResetCounter() {
                 setCount(0);
             }
+
             return (
                 <>
                     <Counter count={count} setCount={setCount} />
                     <Counter count={count} setCount={setCount} />
                     <button onClick={ResetCounter}>Reset</button>
-
-                    <TextInput inputText={inputText} enteredText={enteredText} />
+                    <div>
+                        <TextInput inputText={inputText} enteredText={enteredText} />
+                    </div>
                 </>
             );
         }
