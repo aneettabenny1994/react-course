@@ -36,7 +36,14 @@
                         id: crypto.randomUUID(), //provides uniquieID - crypto provided by JS
                     },
                 ];
-                setChatMessages(newChatMessages);
+                setChatMessages([
+                    ...newChatMessages,
+                    {
+                        message: "Loading",
+                        sender: "robot",
+                        id: crypto.randomUUID(), //provides uniquieID - crypto provided by JS
+                    },
+                ]);
                 const response = await Chatbot.getResponseAsync(inputText);
                 setChatMessages([
                     ...newChatMessages,
