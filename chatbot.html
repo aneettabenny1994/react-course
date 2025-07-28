@@ -155,10 +155,17 @@
 
     function ChatMessages({ chatMessages }) {
       //useState has 2 values - 1st value current Data, 2nd value = new value of array.
+      const chatMessagesRef = React.useRef(null);
+      React.useEffect(() => {
+        const containerElem = chatMessagesRef.current;
+        if (containerElem) {
+          containerElem.scrollTop = containerElem.scrollHeight;
+        }
+      }, [chatMessages]);
 
       return (
         <>
-          <div className="chat-messages-container">
+          <div className="chat-messages-container" ref={chatMessagesRef}>
             {chatMessages.map((chatMessage) => {
               return (
                 <ChatMessage
