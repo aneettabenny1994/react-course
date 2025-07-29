@@ -82,6 +82,11 @@
         .welcome-message {
             text-align: center;
         }
+
+        .loading-spinner {
+            height: 40px;
+            margin: -15px;
+        }
     </style>
 </head>
 
@@ -97,10 +102,15 @@
     <script type="text/babel">
         function ChatInput({ chatMessages, setChatMessages }) {
             const [inputText, setInputText] = React.useState("");
+            const [isLoading, setIsLoading] = React.useState(false);
             function SaveInputText(event) {
                 setInputText(event.target.value);
             }
-            function SendMessage() {
+            async function SendMessage() {
+                if (isLoading || inputText === "") {
+                    return;
+                }
+                setIsLoading(true);
                 const newChatMessages = [
                     ...chatMessages,
                     {
@@ -109,8 +119,18 @@
                         id: crypto.randomUUID(), //provides uniquieID - crypto provided by JS
                     },
                 ];
-                setChatMessages(newChatMessages);
-                const response = Chatbot.getResponse(inputText);
+
+                setChatMessages([
+                    ...newChatMessages,
+                    {
+                        message: (
+                            <img src="loading-spinner.gif" className="loading-spinner" />
+                        ),
+                        sender: "robot",
+                        id: crypto.randomUUID(), //provides uniquieID - crypto provided by JS
+                    },
+                ]);
+                const response = await Chatbot.getResponseAsync(inputText);
                 setChatMessages([
                     ...newChatMessages,
                     {
@@ -119,6 +139,7 @@
                         id: crypto.randomUUID(), //provides uniquieID - crypto provided by JS
                     },
                 ]);
+                setIsLoading(false);
                 setInputText("");
             }
             return (
