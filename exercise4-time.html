@@ -25,6 +25,17 @@
                 }, 1000);
             }, []);
 
+            // React.useEffect(() => {
+            //     setInterval(() => {
+            //         // The purpose of this exercise is to see how the
+            //         // dependency array affects how many times useEffect()
+            //         // runs. Notice that it runs a lot more often without
+            //         // the dependency array.
+            //         console.log("run code");
+            //         setCurrentTime(dayjs().format("HH:mm:ss"));
+            //     }, 1000);
+            // });
+
             return (
                 <>
                     <p>Current Time: {currentTime}</p>
