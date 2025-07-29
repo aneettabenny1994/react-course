@@ -3,6 +3,29 @@
 
 <head>
     <title>Counter App</title>
+    <style>
+        body {
+            margin: 0 8px;
+        }
+
+        .button {
+            background-color: rgb(25, 135, 84);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin-left: 10px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .counter-container {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            background-color: rgb(222, 222, 222);
+            align-items: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -35,12 +58,21 @@
 
             return (
                 <>
-                    <button onClick={ButtonClicked} ref={buttonRef}>
-                        Clicked {count} {count === 1 ? "time" : "times"}{" "}
-                    </button>
-
-                    <button onClick={ResetCounter}>Reset</button>
-                    <button onClick={AutoClick}>Auto Click</button>
+                    <div className="counter-container">
+                        <button
+                            className="button"
+                            onClick={ButtonClicked}
+                            ref={buttonRef}
+                        >
+                            Clicked {count} {count === 1 ? "time" : "times"}{" "}
+                        </button>
+                        <button className="button" onClick={ResetCounter}>
+                            Reset
+                        </button>
+                        <button className="button" onClick={AutoClick}>
+                            Auto Click
+                        </button>
+                    </div>
                 </>
             );
         }
