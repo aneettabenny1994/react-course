@@ -1,10 +1,11 @@
 import { useState } from "react";
 import data from './data'
+import './styles.css'
 
 export default function Accordian() {
     const [selected, setSelected] = useState(null)
     function handleSingleSelection(getCurrentId) {
-        setSelected(getCurrentId)
+        setSelected(getCurrentId === selected ? null : getCurrentId)
     }
     return (
         <div className="wrapper">
@@ -26,7 +27,6 @@ export default function Accordian() {
                         <div>No data found!</div>
                 }
             </div>
-            Accordian
         </div>
     );
 }
