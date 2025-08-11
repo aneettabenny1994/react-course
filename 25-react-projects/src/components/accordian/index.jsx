@@ -33,9 +33,14 @@ export default function Accordian() {
                                     <span>+</span>
                                 </div>
                                 {
+                                    enableMultiSelection ?
+                                        multiple.indexOf(dataItem.id) !== -1 && (<div className="content">{dataItem.answer}</div>) :
+                                        selected === dataItem.id && (<div className="content">{dataItem.answer}</div>)
+                                }
+                                {/* {
                                     selected === dataItem.id || multiple.indexOf(dataItem.id) !== -1 ?
                                         <div className="content">{dataItem.answer}</div> : null
-                                }
+                                } */}
                             </div>
                         ) :
                         <div>No data found!</div>
