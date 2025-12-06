@@ -8,10 +8,11 @@ export function HomePage({ cart }) {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get('https://friendly-space-fishstick-r597pj9vw9q2rpv-3000.app.github.dev/api/products')
-            .then((response) => {
-                setProducts(response.data)
-            });
+        const getHomeData = async () => {
+            const response = await axios.get('https://friendly-space-fishstick-r597pj9vw9q2rpv-3000.app.github.dev/api/products');
+            setProducts(response.data)
+        }
+        getHomeData();
     }, []); //Only after component is created.
     return (
         <>

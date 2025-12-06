@@ -9,14 +9,14 @@ export function CheckoutPage({ cart }) {
     const [deliveryOptions, setDeliveryOptions] = useState([]);
     const [paymentSummary, setpaymentSummary] = useState(null);
     useEffect(() => {
-        axios.get('https://friendly-space-fishstick-r597pj9vw9q2rpv-3000.app.github.dev/api/delivery-options?expand=estimatedDeliveryTime')
-            .then((response) => {
-                setDeliveryOptions(response.data)
-            });
-        axios.get('https://friendly-space-fishstick-r597pj9vw9q2rpv-3000.app.github.dev/api/payment-summary')
-            .then((response) => {
-                setpaymentSummary(response.data)
-            });
+        const fetchCheckoutData = async () => {
+            let response = await axios.get('https://friendly-space-fishstick-r597pj9vw9q2rpv-3000.app.github.dev/api/delivery-options?expand=estimatedDeliveryTime');
+            setDeliveryOptions(response.data)
+
+            response = await axios.get('https://friendly-space-fishstick-r597pj9vw9q2rpv-3000.app.github.dev/api/payment-summary');
+            setpaymentSummary(response.data)
+        }
+        fetchCheckoutData();
     }, [])
     return (
         <>

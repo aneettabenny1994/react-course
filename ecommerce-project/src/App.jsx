@@ -12,10 +12,11 @@ function App() {
   const [cart, setCart] = useState([]);
   useEffect(() => {
     //fetch backend data for cart-items
-    axios.get('https://friendly-space-fishstick-r597pj9vw9q2rpv-3000.app.github.dev/api/cart-items?expand=product')
-      .then((response) => {
-        setCart(response.data)
-      });
+    const fetchAppData = async () => {
+      const response = await axios.get('https://friendly-space-fishstick-r597pj9vw9q2rpv-3000.app.github.dev/api/cart-items?expand=product');
+      setCart(response.data)
+    }
+    fetchAppData();
   }, []);
   return (
     <Routes>
