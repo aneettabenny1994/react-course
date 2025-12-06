@@ -12,7 +12,7 @@ function App() {
   const [cart, setCart] = useState([]);
   useEffect(() => {
     //fetch backend data for cart-items
-    axios.get('https://fantastic-goldfish-9gv6jpv4wxq3x76-3000.app.github.dev/api/cart-items')
+    axios.get('https://friendly-space-fishstick-r597pj9vw9q2rpv-3000.app.github.dev/api/cart-items?expand=product')
       .then((response) => {
         setCart(response.data)
       });

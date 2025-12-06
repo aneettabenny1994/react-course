@@ -3,12 +3,13 @@ import { useEffect, useState } from 'react';
 import './HomePage.css';
 import { Header } from '../components/Header';
 import CheckmarkIcon from '../assets/images/icons/checkmark.png';
+import { formatMoney } from '../utils/money'
 
 export function HomePage({ cart }) {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get('https://fantastic-goldfish-9gv6jpv4wxq3x76-3000.app.github.dev/api/products')
+        axios.get('https://friendly-space-fishstick-r597pj9vw9q2rpv-3000.app.github.dev/api/products')
             .then((response) => {
                 setProducts(response.data)
             });
@@ -41,7 +42,7 @@ export function HomePage({ cart }) {
                                 </div>
 
                                 <div className="product-price">
-                                    ${(product.priceCents / 100).toFixed(2)}
+                                    {formatMoney(product.priceCents)}
                                 </div>
 
                                 <div className="product-quantity-container">
