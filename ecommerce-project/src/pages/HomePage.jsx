@@ -1,14 +1,17 @@
-import axios from  'axios';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import './HomePage.css';
 import { Header } from '../components/Header';
-import { products } from '../../starting-code/data/products';
 import CheckmarkIcon from '../assets/images/icons/checkmark.png';
 
 export function HomePage() {
-    axios.get('https://fantastic-goldfish-9gv6jpv4wxq3x76-3000.app.github.dev/api/products')
-        .then((response) => {
-            response.data
-        });
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+        axios.get('https://fantastic-goldfish-9gv6jpv4wxq3x76-3000.app.github.dev/api/products')
+            .then((response) => {
+                setProducts(response.data)
+            });
+    }, []); //Only after component is created.
     return (
         <>
             <title>Ecommerce Project</title>
