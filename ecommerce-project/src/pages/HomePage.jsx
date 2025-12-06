@@ -1,14 +1,13 @@
+import axios from  'axios';
 import './HomePage.css';
 import { Header } from '../components/Header';
 import { products } from '../../starting-code/data/products';
 import CheckmarkIcon from '../assets/images/icons/checkmark.png';
 
 export function HomePage() {
-    fetch('https://fantastic-goldfish-9gv6jpv4wxq3x76-3000.app.github.dev/api/products')
+    axios.get('https://fantastic-goldfish-9gv6jpv4wxq3x76-3000.app.github.dev/api/products')
         .then((response) => {
-            response.json().then((data)=> {
-                console.log(data)
-            })
+            response.data
         });
     return (
         <>
