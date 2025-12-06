@@ -6,17 +6,23 @@ import CheckmarkIcon from '../assets/images/icons/checkmark.png';
 
 export function HomePage() {
     const [products, setProducts] = useState([]);
+    const [cart, setCart] = useState([]);
     useEffect(() => {
         axios.get('https://fantastic-goldfish-9gv6jpv4wxq3x76-3000.app.github.dev/api/products')
             .then((response) => {
                 setProducts(response.data)
+            });
+        //fetch backend data for cart-items
+        axios.get('https://fantastic-goldfish-9gv6jpv4wxq3x76-3000.app.github.dev/api/cart-items')
+            .then((response) => {
+                setCart(response.data)
             });
     }, []); //Only after component is created.
     return (
         <>
             <title>Ecommerce Project</title>
             <link rel="icon" type="image/svg+xml" href="home.png" />
-            <Header />
+            <Header cart={cart} />
             <div className="home-page">
                 <div className="products-grid">
                     {products.map((product) => {
