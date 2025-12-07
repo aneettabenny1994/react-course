@@ -9,7 +9,7 @@ export function HomePage({ cart }) {
 
     useEffect(() => {
         const getHomeData = async () => {
-            const response = await axios.get('https://friendly-space-fishstick-r597pj9vw9q2rpv-3000.app.github.dev/api/products');
+            const response = await axios.get('https://bookish-space-memory-r597pj9v6vx3wjrp-3000.app.github.dev/api/products');
             setProducts(response.data)
         }
         getHomeData();

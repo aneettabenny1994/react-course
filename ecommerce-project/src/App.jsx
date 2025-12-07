@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     //fetch backend data for cart-items
     const fetchAppData = async () => {
-      const response = await axios.get('https://friendly-space-fishstick-r597pj9vw9q2rpv-3000.app.github.dev/api/cart-items?expand=product');
+      const response = await axios.get('https://bookish-space-memory-r597pj9v6vx3wjrp-3000.app.github.dev/api/cart-items?expand=product');
       setCart(response.data)
     }
     fetchAppData();

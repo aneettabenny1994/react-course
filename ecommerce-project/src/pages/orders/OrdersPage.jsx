@@ -10,11 +10,12 @@ import { formatMoney } from '../../utils/money';
 export function OrdersPage({ cart }) {
     const [orders, setOrders] = useState([]);
     useEffect(() => {
-        axios.get('https://friendly-space-fishstick-r597pj9vw9q2rpv-3000.app.github.dev/api/orders?expand=products')
-            .then((response) => {
-                setOrders(response.data)
-            });
-    }, [])
+        const fetchOrdersData = async () => {
+            const response = await axios.get('https://bookish-space-memory-r597pj9v6vx3wjrp-3000.app.github.dev/api/orders?expand=products');
+            setOrders(response.data)
+        }
+        fetchOrdersData();
+    }, []);
     return (
         <>
             <title>Orders</title>
