@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     //fetch backend data for cart-items
     const fetchAppData = async () => {
-      const response = await axios.get('https://bookish-space-memory-r597pj9v6vx3wjrp-3000.app.github.dev/api/cart-items?expand=product');
+      const response = await axios.get('https://psychic-barnacle-576vxw6px94hvqgv-3000.app.github.dev/api/cart-items?expand=product');
       setCart(response.data)
     }
     fetchAppData();
@@ -23,7 +23,7 @@ function App() {
       <Route index element={<HomePage cart={cart} />} />
       <Route path='checkout' element={<CheckoutPage cart={cart} />}></Route>
       <Route path='orders' element={<OrdersPage cart={cart} />}></Route>
-      <Route path='tracking' element={<TrackingPage cart={cart} />}></Route>
+      <Route path='tracking/:orderId/:productId' element={<TrackingPage cart={cart} />}></Route>
       <Route path='*' element={<NotFoundPage />}></Route>
     </Routes>
   )

@@ -9,7 +9,7 @@ export function HomePage({ cart }) {
 
     useEffect(() => {
         const getHomeData = async () => {
-            const response = await axios.get('https://bookish-space-memory-r597pj9v6vx3wjrp-3000.app.github.dev/api/products');
+            const response = await axios.get('https://psychic-barnacle-576vxw6px94hvqgv-3000.app.github.dev/api/products');
             setProducts(response.data)
         }
         getHomeData();

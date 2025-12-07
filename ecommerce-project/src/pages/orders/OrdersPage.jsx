@@ -8,7 +8,7 @@ export function OrdersPage({ cart }) {
     const [orders, setOrders] = useState([]);
     useEffect(() => {
         const fetchOrdersData = async () => {
-            const response = await axios.get('https://bookish-space-memory-r597pj9v6vx3wjrp-3000.app.github.dev/api/orders?expand=products');
+            const response = await axios.get('https://psychic-barnacle-576vxw6px94hvqgv-3000.app.github.dev/api/orders?expand=products');
             setOrders(response.data)
         }
         fetchOrdersData();
