@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import BuyAgainIcon from '../../assets/images/icons/buy-again.png';
 
 export function OrderDetailsGrid({ order }) {
+    const orderId = order.id;
     return (
         <div className="order-details-grid">
             {order.products.map((orderProduct) => {
@@ -30,7 +31,7 @@ export function OrderDetailsGrid({ order }) {
                         </div>
 
                         <div className="product-actions">
-                            <Link to="/tracking">
+                            <Link to={`/tracking/${orderId}/${orderProduct.productId}`}>
                                 <button className="track-package-button button-secondary">
                                     Track package
                                 </button>
