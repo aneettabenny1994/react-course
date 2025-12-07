@@ -1,7 +1,8 @@
+import axios from "axios";
 import { formatMoney } from "../../utils/money";
 import CheckmarkIcon from '../../assets/images/icons/checkmark.png';
 
-export function ProductGrid({ products }) {
+export function ProductGrid({ products, loadCart }) {
     return (
         <div className="products-grid">
             {products.map((product) => {
@@ -50,7 +51,13 @@ export function ProductGrid({ products }) {
                             Added
                         </div>
 
-                        <button className="add-to-cart-button button-primary">
+                        <button className="add-to-cart-button button-primary" onClick={async () => {
+                            await axios.post('https://psychic-barnacle-576vxw6px94hvqgv-3000.app.github.dev/api/cart-items', {
+                                productId: product.id,
+                                quantity: 1
+                            });
+                            await loadCart();
+                        }}>
                             Add to Cart
                         </button>
                     </div>

@@ -10,17 +10,16 @@ import { useEffect, useState } from 'react'
 
 function App() {
   const [cart, setCart] = useState([]);
+  const loadCart = async () => {
+    const response = await axios.get('https://psychic-barnacle-576vxw6px94hvqgv-3000.app.github.dev/api/cart-items?expand=product');
+    setCart(response.data)
+  }
   useEffect(() => {
-    //fetch backend data for cart-items
-    const fetchAppData = async () => {
-      const response = await axios.get('https://psychic-barnacle-576vxw6px94hvqgv-3000.app.github.dev/api/cart-items?expand=product');
-      setCart(response.data)
-    }
-    fetchAppData();
+    loadCart();
   }, []);
   return (
     <Routes>
-      <Route index element={<HomePage cart={cart} />} />
+      <Route index element={<HomePage cart={cart} loadCart={loadCart} />} />
       <Route path='checkout' element={<CheckoutPage cart={cart} />}></Route>
       <Route path='orders' element={<OrdersPage cart={cart} />}></Route>
       <Route path='tracking/:orderId/:productId' element={<TrackingPage cart={cart} />}></Route>
