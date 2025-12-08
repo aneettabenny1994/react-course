@@ -10,10 +10,10 @@ export function CheckoutPage({ cart }) {
     const [paymentSummary, setpaymentSummary] = useState(null);
     useEffect(() => {
         const fetchCheckoutData = async () => {
-            let response = await axios.get('https://psychic-barnacle-576vxw6px94hvqgv-3000.app.github.dev/api/delivery-options?expand=estimatedDeliveryTime');
+            let response = await axios.get('https://ideal-space-trout-r597pj9vrg4fwpgr-3000.app.github.dev/api/delivery-options?expand=estimatedDeliveryTime');
             setDeliveryOptions(response.data)
 
-            response = await axios.get('https://psychic-barnacle-576vxw6px94hvqgv-3000.app.github.dev/api/payment-summary');
+            response = await axios.get('https://ideal-space-trout-r597pj9vrg4fwpgr-3000.app.github.dev/api/payment-summary');
             setpaymentSummary(response.data)
         }
         fetchCheckoutData();

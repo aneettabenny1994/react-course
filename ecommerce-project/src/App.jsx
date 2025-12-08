@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react'
 function App() {
   const [cart, setCart] = useState([]);
   const loadCart = async () => {
-    const response = await axios.get('https://psychic-barnacle-576vxw6px94hvqgv-3000.app.github.dev/api/cart-items?expand=product');
+    const response = await axios.get('https://ideal-space-trout-r597pj9vrg4fwpgr-3000.app.github.dev/api/cart-items?expand=product');
     setCart(response.data)
   }
   useEffect(() => {

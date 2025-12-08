@@ -10,7 +10,7 @@ export function TrackingPage({ cart }) {
     const [order, setOrder] = useState(null);
     useEffect(() => {
         const getOrderData = async () => {
-            const response = await axios.get(`https://psychic-barnacle-576vxw6px94hvqgv-3000.app.github.dev/api/orders/${orderId}?expand=products`);
+            const response = await axios.get(`https://ideal-space-trout-r597pj9vrg4fwpgr-3000.app.github.dev/api/orders/${orderId}?expand=products`);
             setOrder(response.data)
         }
         getOrderData();
