@@ -9,7 +9,13 @@ export function CartItemDetails({ cartItem, loadCart }) {
         await axios.delete(`https://ideal-space-trout-r597pj9vrg4fwpgr-3000.app.github.dev/api/cart-items/${cartItem.productId}`);
         await loadCart();
     };
-    const updateQuantity = () => {
+    const updateQuantity = async () => {
+        if (isUpdatingQuantity) {
+            await axios.put(`https://ideal-space-trout-r597pj9vrg4fwpgr-3000.app.github.dev/api/cart-items/${cartItem.productId}`, {
+                quantity: Number(quantity)
+            });
+            await loadCart();
+        }
         // Switch between true and false for isUpdatingQuantity.
         setIsUpdatingQuantity(!isUpdatingQuantity);
 
