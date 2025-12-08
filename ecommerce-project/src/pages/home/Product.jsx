@@ -1,10 +1,22 @@
-import { useState} from 'react';
+import { useState } from 'react';
 import axios from "axios";
 import { formatMoney } from '../../utils/money';
 import CheckmarkIcon from '../../assets/images/icons/checkmark.png';
 
 export function Product({ product, loadCart }) {
     const [quantity, setQuantity] = useState(1);
+    const addToCart = async () => {
+        await axios.post('https://ideal-space-trout-r597pj9vrg4fwpgr-3000.app.github.dev/api/cart-items', {
+            productId: product.id,
+            quantity
+        });
+        await loadCart();
+    };
+    const selectQuantity = (event) => {
+        const selectedQuantityValue = Number(event.target.value);
+        setQuantity(selectedQuantityValue);
+    };
+
     return (
         <div className="product-container">
             <div className="product-image-container">
@@ -29,12 +41,7 @@ export function Product({ product, loadCart }) {
             </div>
 
             <div className="product-quantity-container">
-                <select value={quantity} onChange={
-                    (event) => {
-                        const selectedQuantityValue = Number(event.target.value);
-                        setQuantity(selectedQuantityValue);
-                    }
-                } >
+                <select value={quantity} onChange={selectQuantity} >
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -55,13 +62,7 @@ export function Product({ product, loadCart }) {
                 Added
             </div>
 
-            <button className="add-to-cart-button button-primary" onClick={async () => {
-                await axios.post('https://ideal-space-trout-r597pj9vrg4fwpgr-3000.app.github.dev/api/cart-items', {
-                    productId: product.id,
-                    quantity
-                });
-                await loadCart();
-            }}>
+            <button className="add-to-cart-button button-primary" onClick={addToCart}>
                 Add to Cart
             </button>
         </div>
