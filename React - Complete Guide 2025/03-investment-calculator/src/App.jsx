@@ -1,7 +1,10 @@
-function App() {
-  return (
-    <h1>React Investment Calculator</h1>
-  )
-}
+import logo from "../assets/investment-calculator-logo.png";
 
-export default App
+export function Header() {
+  return (
+    <header id="header">
+      <img src={logo} alt="Investment Calculator Logo" />
+      <h1>Investment Calculator</h1>
+    </header>
+  );
+}
