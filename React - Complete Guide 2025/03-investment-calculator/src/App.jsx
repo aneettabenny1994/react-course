@@ -1,10 +1,13 @@
-import logo from "../assets/investment-calculator-logo.png";
+import { Header } from "./components/Header";
+import UserInput from "./components/UserInput";
 
-export function Header() {
+function App() {
   return (
-    <header id="header">
-      <img src={logo} alt="Investment Calculator Logo" />
-      <h1>Investment Calculator</h1>
-    </header>
+    <>
+      <Header />;
+      <UserInput />;
+    </>
   );
 }
+
+export default App;
