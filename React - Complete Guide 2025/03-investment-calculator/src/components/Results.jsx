@@ -7,7 +7,7 @@ export function Results({ input }) {
         resultsData[0].interest -
         resultsData[0].annualInvestment;
     return (
-        <table id="results">
+        <table id="result">
             <thead>
                 <tr>
                     <th>Year</th>
@@ -19,7 +19,7 @@ export function Results({ input }) {
             <tbody>
                 {resultsData.map((yearData) => {
                     const totalInterest =
-                        yearData.valueEndOfYear -
+                        yearData?.valueEndOfYear -
                         yearData.annualInvestment * yearData.year -
                         initialInvestment;
                     const totalAmountInvested = yearData.valueEndOfYear - totalInterest;
