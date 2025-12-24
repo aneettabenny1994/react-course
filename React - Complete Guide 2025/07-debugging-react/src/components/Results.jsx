@@ -4,7 +4,7 @@ export default function Results({ input }) {
   const results = [];
   calculateInvestmentResults(input, results);
   if (results.length === 0) {
-    return <p className="center">invalid input data provided.</p>;
+    return <p className="center">Invalid input data provided.</p>;
   }
   const initialInvestment =
     results[0].valueEndOfYear -
