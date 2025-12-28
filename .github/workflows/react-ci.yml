@@ -1,4 +1,4 @@
-name: React CI
+name: React Projects CI
 
 on:
   push:
@@ -10,18 +10,31 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        project:
+          - react-basics
+          - login-form
+          - ecommerce-project
+          - chatbot-project
+
+    defaults:
+      run:
+        working-directory: ${{ matrix.project }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'npm'
+          cache: npm
+          cache-dependency-path: ${{ matrix.project }}/package-lock.json
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run build
+      - name: Build project
         run: npm run build
