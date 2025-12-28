@@ -13,7 +13,6 @@ jobs:
     strategy:
       matrix:
         project:
-          - react-basics
           - login-form
           - ecommerce-project
           - chatbot-project
