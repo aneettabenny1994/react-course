@@ -3,7 +3,9 @@ import ProtectsSidebar from "./components/ProjectsSidebar";
 function App() {
   return (
     <>
-      <ProtectsSidebar />
+      <main className="h-screen my-8">
+        <ProtectsSidebar />
+      </main>
     </>
   );
 }
