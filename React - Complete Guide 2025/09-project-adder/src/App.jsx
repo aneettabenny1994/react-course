@@ -23,11 +23,13 @@ function App() {
       dueDate: projectData.dueDate,
     };
     setProjectsState((prevState) => {
-      return { ...prevState, projects: [...prevState.projects, newProject] };
+      return {
+        ...prevState,
+        selectedProjectId: undefined,
+        projects: [...prevState.projects, newProject],
+      };
     });
   }
-
-  console.log(projectsState.projects);
 
   let content;
 
@@ -40,7 +42,10 @@ function App() {
   return (
     <>
       <main className="h-screen my-8 flex gap-8">
-        <ProtectsSidebar onStartAddProject={handleStartAddProject} />
+        <ProtectsSidebar
+          onStartAddProject={handleStartAddProject}
+          projects={projectsState.projects}
+        />
         {content}
       </main>
     </>
