@@ -1,3 +1,4 @@
+import { useState } from "react";
 import QuestionTimer from "./QuestionTimer";
 import Answers from "./Answers";
 import QUESIONS from "../questions.js";
@@ -13,7 +14,7 @@ export default function Question({ index, onSelectAnswer, onSkipAnswer }) {
         setTimeout(() => {
             setAnswer({
                 selectedAnswer: answer,
-                isCorrect: QUESIONS[key].answers[0] === answer,
+                isCorrect: QUESIONS[index].answers[0] === answer,
             });
 
             setTimeout(() => {
