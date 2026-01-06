@@ -48,7 +48,7 @@ export default function Question({ index, onSelectAnswer, onSkipAnswer }) {
                 OnTimeOut={answer.selectedAnswer === "" ? onSkipAnswer : null}
                 mode={answerState}
             />
-            <h2>{QUESIONS[index].questionText}</h2>
+            <h2>{QUESIONS[index].text}</h2>
             <Answers
                 answers={QUESIONS[index].answers}
                 selectedAnswer={answer.selectedAnswer}
