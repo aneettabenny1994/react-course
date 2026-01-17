@@ -1,6 +1,52 @@
+import { useState } from "react";
+import {
+  isEmail,
+  isNotEmpty,
+  hasMinLength,
+  isEqualsToOtherValue,
+} from "../util/validation";
+
 export default function Signup() {
+  const [passwordsAreNotEqual, setPasswordsAreNotEqual] = useState(false);
+
+  function signUpAction(formData) {
+    const email = formData.get("email");
+    const password = formData.get("password");
+    const confirmPassword = formData.get("confirm-password");
+    const firstName = formData.get("first-name");
+    const lastName = formData.get("last-name");
+    const role = formData.get("role");
+    const terms = formData.get("terms");
+    const acquisitionChannel = formData.getAll("acquisition");
+
+    let errors = [];
+    if (!isEmail(email)) {
+      errors.push("Invalid email address");
+    }
+    if (!isNotEmpty(password) || !hasMinLength(password, 6)) {
+      errors.push("You must provide a password with at least six characters");
+    }
+    if (!isEqualsToOtherValue(password, confirmPassword)) {
+      errors.push("Passwords do not match");
+    }
+    if (!isNotEmpty(firstName) || !isNotEmpty(lastName)) {
+      errors.push("Please provide both your first and last name");
+    }
+    if (!isNotEmpty(role)) {
+      errors.push("Please select a role");
+    }
+
+    if (!terms) {
+      errors.push("You must agree to the terms and conditions.");
+    }
+    if (acquisitionChannel.length === 0) {
+      errors.push("Please select at least one acquisition channel.");
+    }
+
+    console.log(enteredEmail);
+  }
   return (
-    <form>
+    <form action={signUpAction}>
       <h2>Welcome on board!</h2>
       <p>We just need a little bit of data from you to get you started 🚀</p>
 
