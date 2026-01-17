@@ -1,7 +1,9 @@
-import { useActionState } from "react";
+import { useActionState, use } from "react";
+import { OpinionsContext } from "../store/opinions-context";
 
 export function NewOpinion() {
-  function shareOpinionAction(prevState, formData) {
+  const { addOpinion } = use(OpinionsContext); //React 19 can use use or useContext
+  async function shareOpinionAction(prevState, formData) {
     const userName = formData.get("userName");
     const title = formData.get("title");
     const body = formData.get("body");
@@ -22,6 +24,7 @@ export function NewOpinion() {
     }
 
     //Submit to backend
+    await addOpinion({ title, body, userName });
     return { errors: null };
   }
 
