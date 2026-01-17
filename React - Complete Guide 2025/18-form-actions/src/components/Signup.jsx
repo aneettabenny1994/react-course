@@ -1,15 +1,13 @@
-import { useState } from "react";
+import { useActionState } from "react";
 import {
   isEmail,
   isNotEmpty,
   hasMinLength,
-  isEqualsToOtherValue,
+  isEqualToOtherValue,
 } from "../util/validation";
 
 export default function Signup() {
-  const [passwordsAreNotEqual, setPasswordsAreNotEqual] = useState(false);
-
-  function signUpAction(formData) {
+  function signUpAction(prevFormState, formData) {
     const email = formData.get("email");
     const password = formData.get("password");
     const confirmPassword = formData.get("confirm-password");
@@ -26,7 +24,7 @@ export default function Signup() {
     if (!isNotEmpty(password) || !hasMinLength(password, 6)) {
       errors.push("You must provide a password with at least six characters");
     }
-    if (!isEqualsToOtherValue(password, confirmPassword)) {
+    if (!isEqualToOtherValue(password, confirmPassword)) {
       errors.push("Passwords do not match");
     }
     if (!isNotEmpty(firstName) || !isNotEmpty(lastName)) {
@@ -35,18 +33,24 @@ export default function Signup() {
     if (!isNotEmpty(role)) {
       errors.push("Please select a role");
     }
-
     if (!terms) {
       errors.push("You must agree to the terms and conditions.");
     }
     if (acquisitionChannel.length === 0) {
       errors.push("Please select at least one acquisition channel.");
     }
+    if (errors.length > 0) {
+      return { errors };
+    }
 
-    console.log(enteredEmail);
+    return { errors: null };
   }
+
+  const [formState, formAction] = useActionState(signUpAction, {
+    errors: null,
+  });
   return (
-    <form action={signUpAction}>
+    <form action={formAction}>
       <h2>Welcome on board!</h2>
       <p>We just need a little bit of data from you to get you started 🚀</p>
 
@@ -130,6 +134,14 @@ export default function Signup() {
           agree to the terms and conditions
         </label>
       </div>
+
+      {formState.errors && (
+        <ul className="errors">
+          {formState.errors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+      )}
 
       <p className="form-actions">
         <button type="reset" className="button button-flat">
